@@ -1,8 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { InstitutosModule } from './institutos/institutos.module';
-import { TipoMaterialesModule } from './tipo-materiales/tipo-materiales.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from './app.controller';
+import { AsignaturasModule } from './asignaturas/asignaturas.module';
+import { CarrerasModule } from './carreras/carreras.module';
+import { InstitutosModule } from './institutos/institutos.module';
+import { MallasModule } from './mallas/mallas.module';
+import { TipoMaterialesModule } from './tipo-materiales/tipo-materiales.module';
+import { Asignatura } from './entities/asignatura.entity';
+import { Carrera } from './entities/carrera.entity';
+import { Malla } from './entities/malla.entity';
 import { Instituto } from './entities/instituto.entity';
 import { TipoMaterial } from './entities/tipoMaterial.entity';
 
@@ -15,14 +21,15 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'prueba',
-      entities: [
-        Instituto,
-        TipoMaterial],
+      entities: [Asignatura, Carrera, Instituto, Malla, TipoMaterial],
       synchronize: false,
       logging: true,
     }),
-    TipoMaterialesModule,
+    AsignaturasModule,
+    CarrerasModule,
     InstitutosModule,
+    MallasModule,
+    TipoMaterialesModule,
   ],
   controllers: [AppController],
   providers: [],

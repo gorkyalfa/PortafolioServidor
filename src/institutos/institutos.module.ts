@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { InstitutosController } from './Institutos.controller';
-import { InstitutosService } from './institutos.service';
 import { Instituto } from '../entities/instituto.entity';
+import { InstitutosController } from './institutos.controller';
+import { InstitutosService } from './institutos.service';
 
 @Module({
-    imports: [ TypeOrmModule.forFeature([ Instituto ]) ],
-    controllers: [InstitutosController],
-    providers: [InstitutosService] })
-    
-export class InstitutosModule { }
+  imports: [TypeOrmModule.forFeature([Instituto])],
+  controllers: [InstitutosController],
+  providers: [InstitutosService],
+})
+export class InstitutosModule {}
