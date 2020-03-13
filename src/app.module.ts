@@ -22,7 +22,7 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
       password: 'postgres',
       database: 'prueba',
       entities: [Asignatura, Carrera, Instituto, Malla, TipoMaterial],
-      synchronize: false,
+      synchronize: true,
       logging: true,
     }),
     AsignaturasModule,
@@ -35,16 +35,3 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
   providers: [],
 })
 export class AppModule {}
-/*
-{
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "postgres",
-    database: "prueba",
-    entities: [TipoMaterial],
-    synchronize: false,
-    logging: true
-  }
-*/

@@ -6,7 +6,9 @@ export class Instituto {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    length: 100,
+  })
   nombre: string;
 
   @OneToMany(

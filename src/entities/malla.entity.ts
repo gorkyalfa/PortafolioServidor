@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
 import { Carrera } from './carrera.entity';
 import { Asignatura } from './asignatura.entity';
 
@@ -7,10 +13,15 @@ export class Malla {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    length: 100,
+  })
   nombre: string;
 
-  @ManyToOne(type => Carrera, carrera => carrera.mallas)
+  @ManyToOne(
+    type => Carrera,
+    carrera => carrera.mallas,
+  )
   carrera: Carrera;
 
   @OneToMany(

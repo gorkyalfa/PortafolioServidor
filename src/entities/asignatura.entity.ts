@@ -6,9 +6,14 @@ export class Asignatura {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    length: 100,
+  })
   nombre: string;
 
-  @ManyToOne(type => Malla, malla => malla.asignaturas)
+  @ManyToOne(
+    type => Malla,
+    malla => malla.asignaturas,
+  )
   malla: Malla;
 }
