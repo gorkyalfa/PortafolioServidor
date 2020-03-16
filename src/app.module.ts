@@ -11,6 +11,12 @@ import { Carrera } from './entities/carrera.entity';
 import { Malla } from './entities/malla.entity';
 import { Instituto } from './entities/instituto.entity';
 import { TipoMaterial } from './entities/tipoMaterial.entity';
+import { ProcesosModule } from './procesos/procesos.module';
+import { Proceso } from './entities/proceso.entity';
+import { ResultadosAprendizajeModule } from './resultados-aprendizaje/resultados-aprendizaje.module';
+import { ResultadoAprendizaje } from './entities/resultadoAprendizaje.entity';
+import { Evidencia } from './entities/evidencia.entity';
+import { EvidenciasModule } from './evidencias/evidencias.module';
 
 @Module({
   imports: [
@@ -21,7 +27,7 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'prueba',
-      entities: [Asignatura, Carrera, Instituto, Malla, TipoMaterial],
+      entities: [Asignatura, Carrera, Instituto, Malla, TipoMaterial, Proceso, ResultadoAprendizaje, Evidencia],
       synchronize: true,
       logging: true,
     }),
@@ -30,6 +36,9 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
     InstitutosModule,
     MallasModule,
     TipoMaterialesModule,
+    ProcesosModule,
+    ResultadosAprendizajeModule,
+    EvidenciasModule,
   ],
   controllers: [AppController],
   providers: [],
