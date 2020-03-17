@@ -4,6 +4,11 @@ import { AppService } from './app.service';
 import { TipoMaterialesModule } from './tipo-materiales/tipo-materiales.module';
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { TipoMaterial } from './entities/tipoMaterial.entity';
+import { Asignatura } from './entities/asignatura.entity';
+import { AsignaturasModule } from './asignaturas/asignaturas.module';
+import { Carrera } from './entities/carrera.entity';
+import { Modalidad } from './entities/modalidad.entity';
+import { PeriodoAcademico } from './entities/periodoAcademico.entity';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -13,11 +18,12 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
     username: "postgres",
     password: "postgres",
     database: "prueba",
-    entities: [TipoMaterial],
-    synchronize: false,
+    entities: [Asignatura, Carrera, Modalidad, PeriodoAcademico, TipoMaterial],
+    synchronize: true,
     logging: true
   }),
-  TipoMaterialesModule],
+  TipoMaterialesModule,
+  AsignaturasModule],
   controllers: [AppController],
   providers: [AppService],
 })
