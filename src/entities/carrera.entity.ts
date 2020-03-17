@@ -1,16 +1,32 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Asignatura } from './asignatura.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  OneToMany,
+} from 'typeorm';
+import { Instituto } from './instituto.entity';
+import { Malla } from './malla.entity';
 
-@Entity("carreras")
+@Entity('carreras')
 export class Carrera {
-
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    length: 100,
+  })
   nombre: string;
 
-  @OneToMany(type => Asignatura, asignatura => asignatura.carrera)
-    asignaturas: Asignatura[];
+  @ManyToOne(
+    type => Instituto,
+    instituto => instituto.carreras,
+  )
+  instituto: Instituto;
 
+  @OneToMany(
+    type => Malla,
+    malla => malla.carrera,
+  )
+  mallas: Malla[];
 }

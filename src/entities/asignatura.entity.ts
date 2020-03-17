@@ -1,38 +1,37 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
-import { Modalidad } from './modalidad.entity';
-import { Carrera } from './carrera.entity';
-import { PeriodoAcademico } from './periodoAcademico.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Malla } from './malla.entity';
 
-
-
-@Entity("asignaturas")
+@Entity('asignaturas')
 export class Asignatura {
-
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    length: 100,
+  })
   nombre: string;
 
-  @Column()
+  @Column({
+    length: 20,
+  })
   codigo: string;
 
-  @Column()
+  @Column({
+    length: 1000,
+  })
   descripcion: string;
 
-  @Column()
+  @Column({
+    length: 1000,
+  })
   objetivo: string;
 
   @Column()
   totalHoras: number;
 
-  @ManyToOne(type => Carrera, carrera => carrera.asignaturas)
-    carrera: Carrera;
-
-  @OneToMany(type => Modalidad, modalidad => modalidad.asignatura)
-    modalidades: Modalidad[];
-
-  @ManyToOne(type => PeriodoAcademico, periodoAcademico => periodoAcademico.asignaturas)
-    periodoAcademico: PeriodoAcademico;   
-
+  @ManyToOne(
+    type => Malla,
+    malla => malla.asignaturas,
+  )
+  malla: Malla;
 }
