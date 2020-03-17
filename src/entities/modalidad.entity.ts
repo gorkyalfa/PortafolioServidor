@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Asignatura } from './asignatura.entity';
 
 @Entity("modalidades")
 export class Modalidad {
@@ -9,8 +8,5 @@ export class Modalidad {
 
   @Column()
   nombre: string;
-
-  @ManyToOne(type => Asignatura, asignatura => asignatura.modalidades)
-    asignatura: Asignatura;
 
 }
