@@ -25,7 +25,7 @@ export class Proceso {
   resultadosAprendizaje: ResultadoAprendizaje[];
 
   @Column({
-    generated: "increment"
+    default: 0
   })
-  orden: number;
+  index: number;
 }
