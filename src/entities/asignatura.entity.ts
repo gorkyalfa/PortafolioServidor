@@ -11,6 +11,24 @@ export class Asignatura {
   })
   nombre: string;
 
+  @Column({
+    length: 20,
+  })
+  codigo: string;
+
+  @Column({
+    length: 1000,
+  })
+  descripcion: string;
+
+  @Column({
+    length: 1000,
+  })
+  objetivo: string;
+
+  @Column()
+  totalHoras: number;
+
   @ManyToOne(
     type => Malla,
     malla => malla.asignaturas,
