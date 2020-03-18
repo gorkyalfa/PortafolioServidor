@@ -2,6 +2,7 @@ import { Controller, Get, Res, Param, NotFoundException, HttpStatus } from '@nes
 import { Crud } from '@nestjsx/crud';
 import { Proceso } from 'src/entities/proceso.entity';
 import { ProcesosService } from './procesos.service';
+import { getManager } from 'typeorm';
 
 @Crud({
     model: {
@@ -16,7 +17,7 @@ export class ProcesosController {
     async getChildrens(@Res() res: any, @Param('padreID') padreID: any){
         const padre = await this.service.findOne(padreID);
         if(!padre) throw new NotFoundException('Padre no existe');
-        const hijos = await this.service.find({idProceso: padreID});
+        const hijos = await this.service.find({proceso: padreID});
         return res.status(HttpStatus.OK).json(
             hijos
         );
@@ -24,7 +25,8 @@ export class ProcesosController {
 
     @Get('/padres')
     async getParents(@Res() res: any){
-        const padres = await this.service.find({idProceso: null});
+        const manager = getManager();
+        const padres = await manager.getTreeRepository(Proceso).findTrees();
         return res.status(HttpStatus.OK).json(
             padres
         );
