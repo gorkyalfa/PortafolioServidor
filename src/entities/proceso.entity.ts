@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, Tree, TreeParent, OneToMany, Tr
 import { ResultadoAprendizaje } from './resultadoAprendizaje.entity';
 
 @Entity('procesos')
-@Tree("materialized-path")
+@Tree("closure-table")
 export class Proceso {
   @PrimaryGeneratedColumn()
   id: number;
