@@ -12,8 +12,10 @@ import { ResultadosAprendizajeService } from './resultados-aprendizaje.service';
 export class ResultadosAprendizajeController {
     constructor(private service: ResultadosAprendizajeService) {}
 
+    // Metodo para obtener resultados con su respectiva Evidencia.
     @Get('/evidencia')
-    async getResultadosJoinProcesos(){
+    async getResultadosJoinEvidencias(){
         return await this.service.find({ relations: ["evidencia"] });
     }
+
 }

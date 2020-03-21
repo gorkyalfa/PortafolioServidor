@@ -1,9 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, TreeParent, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Generated, ManyToOne } from 'typeorm';
 import { Evidencia } from './evidencia.entity';
 import { Proceso } from './proceso.entity';
 
 @Entity('resultados_aprendizaje')
 export class ResultadoAprendizaje {
+
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -16,7 +17,7 @@ export class ResultadoAprendizaje {
   @Column({
       length: 250
   })
-  resultado: string;
+  nombre: string;
 
   @ManyToOne(
       type => Evidencia,
@@ -24,8 +25,4 @@ export class ResultadoAprendizaje {
   )
   evidencia: Evidencia;
 
-  @Column({
-    generated: "increment"
-  })
-  orden: number;
 }
