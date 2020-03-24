@@ -41,15 +41,6 @@ export class ProcesosController {
         );
     }
 
-    // Metodo para obtener resultados dentro de cada subProceso.
-    @Get('/resultados')
-    async getResultados(@Res() res: any){
-        const resultados = await this.service.find({relations: ['resultadosAprendizaje']});
-        return res.status(HttpStatus.OK).json(
-            resultados
-        );
-    }
-
     // Metodo para eliminar procesos mediante consultas debido a que aun no es soportado.
     @Delete('/remover/:procesoID')
     async removeProcesoAndClosure(@Res() res: any, @Param('procesoID') procesoID: number) {

@@ -19,6 +19,10 @@ export class ResultadoAprendizaje {
   })
   nombre: string;
 
+
+  @Column({ nullable: true })
+  evidenciaId: number;
+
   @ManyToOne(
       type => Evidencia,
       evidencia => evidencia.resultadosAprendizaje
