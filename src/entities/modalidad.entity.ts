@@ -1,12 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity("modalidades")
+@Entity('modalidades')
 export class Modalidad {
-
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   nombre: string;
-
 }
