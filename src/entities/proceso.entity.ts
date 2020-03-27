@@ -2,21 +2,25 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
+  Tree,
   TreeParent,
   OneToMany,
+  TreeChildren,
+  Generated,
 } from 'typeorm';
 import { ResultadoAprendizaje } from './resultadoAprendizaje.entity';
 
 @Entity('procesos')
+@Tree('closure-table')
 export class Proceso {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    nullable: true,
-  })
   @TreeParent()
-  idProceso: number;
+  procesoAncestro: Proceso;
+
+  @TreeChildren()
+  procesosDescendientes: Proceso[];
 
   @Column({
     length: 250,
@@ -28,9 +32,4 @@ export class Proceso {
     resultadoAprendizaje => resultadoAprendizaje.proceso,
   )
   resultadosAprendizaje: ResultadoAprendizaje[];
-
-  @Column({
-    generated: 'increment',
-  })
-  orden: number;
 }
