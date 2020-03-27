@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, Generated, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Evidencia } from './evidencia.entity';
 import { Proceso } from './proceso.entity';
 
@@ -15,18 +15,18 @@ export class ResultadoAprendizaje {
   proceso: Proceso;
 
   @Column({
-      length: 250
+    length: 250
   })
   nombre: string;
 
-
-  @Column({ nullable: true })
+  @Column("int", {nullable: true})
   evidenciaId: number;
 
   @ManyToOne(
-      type => Evidencia,
-      evidencia => evidencia.resultadosAprendizaje
+    type => Evidencia,
+    evidencia => evidencia.resultadosAprendizaje
   )
+  @JoinColumn({name: 'evidenciaId'})
   evidencia: Evidencia;
 
 }

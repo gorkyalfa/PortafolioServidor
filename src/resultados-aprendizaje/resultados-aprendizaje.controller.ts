@@ -13,9 +13,9 @@ export class ResultadosAprendizajeController {
     constructor(private service: ResultadosAprendizajeService) {}
 
     // Metodo para obtener resultados con su respectiva Evidencia.
-    @Get('/evidencia')
-    async getResultadosJoinEvidencias(){
-        return await this.service.find({ relations: ["evidencia"] });
+    @Get('/:id/evidencia')
+    async getResultadosJoinEvidencias(@Param('id') id: any){
+        return await this.service.find({where: [{id: id}], relations: ["evidencia"] });
     }
 
     // Metodo para obtener resultados de un subproceso
@@ -23,4 +23,5 @@ export class ResultadosAprendizajeController {
     async getResultadosJoinProcesos(@Param('procesoID') procesoID: any){
         return await this.service.find({proceso: procesoID});
     }
+ 
 }
