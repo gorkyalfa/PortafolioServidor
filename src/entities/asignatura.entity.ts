@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Malla } from './malla.entity';
+import { Silabo } from './silabo.entity';
 
 @Entity('asignaturas')
 export class Asignatura {
@@ -34,4 +35,6 @@ export class Asignatura {
     malla => malla.asignaturas,
   )
   malla: Malla;
+
+  prerrequisito: Silabo;
 }

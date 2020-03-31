@@ -19,6 +19,8 @@ import { PeriodoAcademico } from './entities/periodoAcademico.entity';
 import { Proceso } from './entities/proceso.entity';
 import { ResultadoAprendizaje } from './entities/resultadoAprendizaje.entity';
 import { TipoMaterial } from './entities/tipoMaterial.entity';
+import { Silabo } from './entities/silabo.entity';
+import { SilabosModule } from './silabos/silabos.module';
 
 @Module({
   imports: [
@@ -29,7 +31,7 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'prueba',
-      entities: [Asignatura, Carrera, Evidencia, Instituto, Malla, Modalidad, PeriodoAcademico, Proceso, ResultadoAprendizaje, TipoMaterial],
+      entities: [Asignatura, Carrera, Evidencia, Instituto, Malla, Modalidad, PeriodoAcademico, Proceso, ResultadoAprendizaje, Silabo, TipoMaterial],
       synchronize: true,
       logging: true,
     }),
@@ -41,6 +43,7 @@ import { TipoMaterial } from './entities/tipoMaterial.entity';
     ProcesosModule,
     ResultadosAprendizajeModule,
     TipoMaterialesModule,
+    SilabosModule,
   ],
   controllers: [AppController],
   providers: [],
