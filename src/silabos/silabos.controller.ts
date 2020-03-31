@@ -13,6 +13,13 @@ export class SilabosController {
     const correquisitos = await this.service.findCorrequisitos(id);
     return res.status(HttpStatus.OK).json(correquisitos);
   }
+
+  @Get('/:id/prerrequisitos')
+  async readPrerrequisitos(@Param('id') id: number, @Res() res: any): Promise<Silabo> {
+    const prerrequisitos = await this.service.findPrerrequisitos(id);
+    return res.status(HttpStatus.OK).json(prerrequisitos);
+  }
+
 }
 
 

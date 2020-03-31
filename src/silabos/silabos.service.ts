@@ -11,14 +11,23 @@ export class SilabosService extends TypeOrmCrudService<Silabo>{
     }
 
     async findCorrequisitos(id: number): Promise<Silabo> {
-        const silabo = await getRepository(Silabo)
+        const correquisitos = await getRepository(Silabo)
        .createQueryBuilder("silabo")
        .innerJoinAndSelect("silabo.correquisitos", "correquisitos")
        .where("silabo.id = :id", { id })
        .getOne();
-       return silabo;
+       return correquisitos;
         /*const silabos = await this.repo.find({ relations: ["correquisitos"] });     
         return silabos;*/
+    }
+
+    async findPrerrequisitos(id: number): Promise<Silabo> {
+        const prerrequisitos = await getRepository(Silabo)
+       .createQueryBuilder("silabo")
+       .innerJoinAndSelect("silabo.prerrequisitos", "prerrequisitos")
+       .where("silabo.id = :id", { id })
+       .getOne();
+       return prerrequisitos;    
     }
 }
 
