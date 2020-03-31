@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne } from 'typeorm';
 import { Malla } from './malla.entity';
 import { Silabo } from './silabo.entity';
+import { Contenido } from 'src/entities/contenido.entity';
 
 @Entity('asignaturas')
 export class Asignatura {
@@ -37,4 +38,7 @@ export class Asignatura {
   malla: Malla;
 
   prerrequisito: Silabo;
+  @OneToOne(type => Contenido)
+  contenido: Contenido;
+
 }

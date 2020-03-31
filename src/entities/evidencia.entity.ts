@@ -7,14 +7,13 @@ export class Evidencia {
   id: number;
 
   @Column({
-      length: 250
+    length: 250,
   })
   nombre: string;
 
   @OneToMany(
     type => ResultadoAprendizaje,
-    resultadoAprendizaje => resultadoAprendizaje.evidencia
+    resultadoAprendizaje => resultadoAprendizaje.evidencia,
   )
   resultadosAprendizaje: ResultadoAprendizaje[];
-
 }

@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, TreeParent, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Evidencia } from './evidencia.entity';
 import { Proceso } from './proceso.entity';
 
@@ -9,23 +15,22 @@ export class ResultadoAprendizaje {
 
   @ManyToOne(
     type => Proceso,
-    proceso => proceso.resultadosAprendizaje
+    proceso => proceso.resultadosAprendizaje,
   )
   proceso: Proceso;
 
   @Column({
-      length: 250
+    length: 250,
   })
-  resultado: string;
+  nombre: string;
+
+  @Column('int', { nullable: true })
+  evidenciaId: number;
 
   @ManyToOne(
-      type => Evidencia,
-      evidencia => evidencia.resultadosAprendizaje
+    type => Evidencia,
+    evidencia => evidencia.resultadosAprendizaje,
   )
+  @JoinColumn({ name: 'evidenciaId' })
   evidencia: Evidencia;
-
-  @Column({
-    generated: "increment"
-  })
-  orden: number;
 }

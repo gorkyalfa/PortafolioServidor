@@ -21,6 +21,12 @@ import { ResultadoAprendizaje } from './entities/resultadoAprendizaje.entity';
 import { TipoMaterial } from './entities/tipoMaterial.entity';
 import { Silabo } from './entities/silabo.entity';
 import { SilabosModule } from './silabos/silabos.module';
+import { SemanasModule } from './semanas/semanas.module';
+import { UnidadesModule } from './unidades/unidades.module';
+import { ContenidosModule } from './contenidos/contenidos.module';
+import { Semana } from './entities/semana.entity';
+import { Unidad } from './entities/unidad.entity';
+import { Contenido } from './entities/contenido.entity';
 
 @Module({
   imports: [
@@ -31,9 +37,12 @@ import { SilabosModule } from './silabos/silabos.module';
       username: 'postgres',
       password: 'postgres',
       database: 'prueba',
-      entities: [Asignatura, Carrera, Evidencia, Instituto, Malla, Modalidad, PeriodoAcademico, Proceso, ResultadoAprendizaje, Silabo, TipoMaterial],
+      entities: [Asignatura, Carrera, Evidencia, Instituto,
+                 Malla, Modalidad, PeriodoAcademico, Proceso, 
+                 ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
+                 Contenido, Unidad],
       synchronize: true,
-      logging: true,
+      logging: true
     }),
     AsignaturasModule,
     CarrerasModule,
@@ -44,6 +53,9 @@ import { SilabosModule } from './silabos/silabos.module';
     ResultadosAprendizajeModule,
     TipoMaterialesModule,
     SilabosModule,
+    SemanasModule,
+    UnidadesModule,
+    ContenidosModule,
   ],
   controllers: [AppController],
   providers: [],
