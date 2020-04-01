@@ -7,7 +7,7 @@ export class Evidencia {
   id: number;
 
   @Column({
-      length: 250
+    length: 250,
   })
   nombre: string;
 
@@ -16,5 +16,4 @@ export class Evidencia {
     resultadosAprendizaje => resultadosAprendizaje.evidencia
   )
   resultadosAprendizaje: ResultadoAprendizaje[];
-
 }

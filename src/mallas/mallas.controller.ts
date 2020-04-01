@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
+import { Crud } from '@nestjsx/crud';
 import { Malla } from '../entities/malla.entity';
 import { MallasService } from './mallas.service';
-import { Crud } from '@nestjsx/crud';
 
 @Crud({ model: { type: Malla } })
 @Controller('mallas')

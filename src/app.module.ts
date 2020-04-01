@@ -19,6 +19,8 @@ import { PeriodoAcademico } from './entities/periodoAcademico.entity';
 import { Proceso } from './entities/proceso.entity';
 import { ResultadoAprendizaje } from './entities/resultadoAprendizaje.entity';
 import { TipoMaterial } from './entities/tipoMaterial.entity';
+import { Silabo } from './entities/silabo.entity';
+import { SilabosModule } from './silabos/silabos.module';
 import { SemanasModule } from './semanas/semanas.module';
 import { UnidadesModule } from './unidades/unidades.module';
 import { ContenidosModule } from './contenidos/contenidos.module';
@@ -44,7 +46,7 @@ import { TipoMaterialPopulate1585669066128 } from 'src/migrations/1585669066128-
       database: 'prueba',
       entities: [Asignatura, Carrera, Evidencia, Instituto,
                  Malla, Modalidad, PeriodoAcademico, Proceso, 
-                 ResultadoAprendizaje, TipoMaterial, Semana,
+                 ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
                  Contenido, Unidad, Material, EstrategiaMetodologica,
                  Finalidad],
       synchronize: true,
@@ -58,6 +60,7 @@ import { TipoMaterialPopulate1585669066128 } from 'src/migrations/1585669066128-
     ProcesosModule,
     ResultadosAprendizajeModule,
     TipoMaterialesModule,
+    SilabosModule,
     SemanasModule,
     UnidadesModule,
     ContenidosModule,

@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
+import { Crud } from '@nestjsx/crud';
 import { Carrera } from '../entities/carrera.entity';
 import { CarrerasService } from './carreras.service';
-import { Crud } from '@nestjsx/crud';
 
 @Crud({ model: { type: Carrera } })
 @Controller('carreras')
