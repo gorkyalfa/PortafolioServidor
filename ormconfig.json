@@ -9,5 +9,9 @@
   ],
   "database": "prueba",
   "synchronize": true,
-  "logging": true
+  "logging": true,
+  "migrations": ["dist/migrations/*.js"],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  }
 }

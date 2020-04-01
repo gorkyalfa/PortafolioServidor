@@ -6,8 +6,6 @@ import { Crud } from "@nestjsx/crud";
 @Crud({
 	model: {
 		type: TipoMaterial
-	
-	
 	}
 })
 @Controller('tipo-materiales')

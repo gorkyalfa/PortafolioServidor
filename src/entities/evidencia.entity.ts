@@ -13,7 +13,7 @@ export class Evidencia {
 
   @OneToMany(
     type => ResultadoAprendizaje,
-    resultadoAprendizaje => resultadoAprendizaje.evidencia
+    resultadosAprendizaje => resultadosAprendizaje.evidencia
   )
   resultadosAprendizaje: ResultadoAprendizaje[];
 
