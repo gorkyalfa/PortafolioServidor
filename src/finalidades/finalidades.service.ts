@@ -10,8 +10,7 @@ export class FinalidadesService extends TypeOrmCrudService<Finalidad> {
     }
 
     async getFinalidadWithEstrategia(): Promise<Finalidad[]> {
-        const finalidades = await this.find({relations: ["estrategiaMetodologica"]});
-        
+        const finalidades = await this.find({relations: ["estrategiaMetodologica"]});        
         return finalidades;
     }
 

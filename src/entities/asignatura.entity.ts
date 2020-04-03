@@ -17,17 +17,7 @@ export class Asignatura {
     length: 20,
   })
   codigo: string;
-
-  @Column({
-    length: 1000,
-  })
-  descripcion: string;
-
-  @Column({
-    length: 1000,
-  })
-  objetivo: string;
-
+  
   @Column()
   totalHoras: number;
 

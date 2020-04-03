@@ -14,7 +14,7 @@ constructor(@InjectRepository(Asignatura) repo: any) {
 async findObjetiboDetalle (id:number) {
   const asignatura = await getRepository(Asignatura)
     .createQueryBuilder("asignatura")
-    .where("asignatura.id = :id", { id: 2 })
+    .where("asignatura.id = :id", { id})
     .getOne();
 }
 }

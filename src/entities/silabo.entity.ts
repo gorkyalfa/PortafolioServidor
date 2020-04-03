@@ -8,6 +8,7 @@ import {
     JoinTable
 } from 'typeorm';
 import { Asignatura } from './asignatura.entity';
+import { Descripcion } from './descripcion.entity';
 
 @Entity('silabos')
 export class Silabo {
@@ -30,4 +31,8 @@ export class Silabo {
     @OneToOne(type => Asignatura)
     @JoinColumn()
     asignatura: Asignatura;
+
+    @OneToOne(type => Descripcion, descripcion => descripcion.silabo)
+    @JoinColumn()
+    descripcion: Descripcion;
 }

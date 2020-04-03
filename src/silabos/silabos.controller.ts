@@ -20,6 +20,18 @@ export class SilabosController {
     return res.status(HttpStatus.OK).json(prerrequisitos);
   }
 
+  @Get('/:id/descripciones')
+  async readDescripcion(@Param('id') id: number, @Res() res: any): Promise<Silabo> {
+    const descripcionObjetivo = await this.service.findDescripcionObjetivo(id);
+    return res.status(HttpStatus.OK).json(descripcionObjetivo);
+  }
+
+  @Get('/asignaturas')
+  async readAsignaturas(@Res() res: any): Promise<Silabo[]> {
+    const asignaturas = await this.service.findAsignaturas();
+    return res.status(HttpStatus.OK).json(asignaturas);
+  }
+
 }
 
 

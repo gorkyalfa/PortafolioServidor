@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 import { Silabo } from '../entities/silabo.entity';
-import { getRepository, Connection } from "typeorm";
+import { getRepository } from "typeorm";
 
 @Injectable()
 export class SilabosService extends TypeOrmCrudService<Silabo>{
@@ -28,6 +28,23 @@ export class SilabosService extends TypeOrmCrudService<Silabo>{
        .where("silabo.id = :id", { id })
        .getOne();
        return prerrequisitos;    
+    }
+
+    async findDescripcionObjetivo(id: number): Promise<Silabo> {
+        const descripcionObjetivo = await getRepository(Silabo)
+       .createQueryBuilder("silabo")
+       .innerJoinAndSelect("silabo.descripcion", "descripcion")
+       .where("silabo.id = :id", { id })
+       .getOne();
+       return descripcionObjetivo;    
+    }
+
+    async findAsignaturas(): Promise<Silabo[]> {
+        const asignaturas = await getRepository(Silabo)
+       .createQueryBuilder("silabo")
+       .innerJoinAndSelect("silabo.asignatura", "asignatura")
+       .getMany();
+       return asignaturas;    
     }
 }
 
