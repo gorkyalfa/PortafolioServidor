@@ -8,4 +8,11 @@ export class SemanasService extends TypeOrmCrudService<Semana>{
     constructor(@InjectRepository(Semana) repo: any) {
         super(repo);
     }
+
+    async getSemanasByUnidad(unidadId: any): Promise<Semana[]> {
+        const semanas = await this.find({unidad: unidadId});
+
+        return semanas;
+    }
+
 }

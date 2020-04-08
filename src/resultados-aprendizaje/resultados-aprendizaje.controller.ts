@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { Crud } from '@nestjsx/crud';
 import { ResultadoAprendizaje } from 'src/entities/resultadoAprendizaje.entity';
 import { ResultadosAprendizajeService } from './resultados-aprendizaje.service';
@@ -14,14 +14,14 @@ export class ResultadosAprendizajeController {
 
     // Metodo para obtener resultados con su respectiva Evidencia.
     @Get('/:id/evidencia')
-    async getResultadosJoinEvidencias(@Param('id') id: any){
-        return await this.service.find({where: [{id: id}], relations: ["evidencia"] });
+    getResultadosJoinEvidencias(@Param('id', ParseIntPipe) id: number): Promise<ResultadoAprendizaje[]> {
+        return this.service.getResultadosJoinEvidencias(id);
     }
 
     // Metodo para obtener resultados de un subproceso
-    @Get('/:procesoID/proceso')
-    async getResultadosJoinProcesos(@Param('procesoID') procesoID: any){
-        return await this.service.find({proceso: procesoID});
+    @Get('/:procesoId/proceso')
+    getResultadosJoinProcesos(@Param('procesoId') procesoId: any): Promise<ResultadoAprendizaje[]> {
+        return this.service.getResultadosJoinProcesos(procesoId);
     }
  
 }

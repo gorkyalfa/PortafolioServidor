@@ -1,4 +1,4 @@
-import { Controller, Get, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Material } from 'src/entities/material.entity';
 import { Crud } from '@nestjsx/crud';
 import { MaterialesService } from './materiales.service';
@@ -13,9 +13,8 @@ export class MaterialesController {
 	constructor(private service: MaterialesService){}
 	
 	@Get('tipos')
-	async getMaterialesWithTipo(@Res() res: any) {
-		const materiales = await this.service.getMaterialesWithTipo();
-		return res.status(HttpStatus.OK).json(materiales);
+	async getMaterialesWithTipo(): Promise<Material[]> {
+		return this.service.getMaterialesWithTipo();
 	}
 	
 }

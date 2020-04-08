@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
 import { Contenido } from './contenido.entity';
 import { Semana } from './semana.entity';
+import { MaxLength, IsString, IsNumber } from 'class-validator';
 
 @Entity('unidades')
 export class Unidad {
@@ -14,6 +15,8 @@ export class Unidad {
   )
   contenido: Contenido;
 
+  @MaxLength(250)
+  @IsString()
   @Column({
       length: 250
   })
@@ -25,6 +28,7 @@ export class Unidad {
   )
   semanas: Semana[];
 
+  @IsNumber()
   @Column({
       nullable: true
   })

@@ -8,4 +8,14 @@ export class ResultadosAprendizajeService extends TypeOrmCrudService<ResultadoAp
     constructor(@InjectRepository(ResultadoAprendizaje) repo: any) {
         super(repo)
     }
+
+    async getResultadosJoinEvidencias(id: number): Promise<ResultadoAprendizaje[]> {
+        const resultados = await this.find({where: [{id: id}], relations: ["evidencia"] })
+        return resultados;
+    }
+
+    async getResultadosJoinProcesos(procesoId: any): Promise<ResultadoAprendizaje[]> {
+        const resultados = await this.find({proceso: procesoId});
+        return resultados;
+    }
 }

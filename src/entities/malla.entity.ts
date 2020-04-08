@@ -7,12 +7,16 @@ import {
 } from 'typeorm';
 import { Carrera } from './carrera.entity';
 import { Asignatura } from './asignatura.entity';
+import { MaxLength, IsString, IsNotEmpty } from 'class-validator';
 
 @Entity('mallas')
 export class Malla {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @MaxLength(100)
+  @IsNotEmpty()
+  @IsString()
   @Column({
     length: 100,
   })

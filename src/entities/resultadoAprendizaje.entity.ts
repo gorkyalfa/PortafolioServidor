@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Evidencia } from './evidencia.entity';
 import { Proceso } from './proceso.entity';
+import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
 
 @Entity('resultados_aprendizaje')
 export class ResultadoAprendizaje {
@@ -19,6 +20,9 @@ export class ResultadoAprendizaje {
   )
   proceso: Proceso;
 
+  @MaxLength(250)
+  @IsNotEmpty()
+  @IsString()
   @Column({
     length: 250,
   })

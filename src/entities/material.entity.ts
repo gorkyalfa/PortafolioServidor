@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { TipoMaterial } from "./tipoMaterial.entity";
+import { MaxLength, IsNotEmpty, IsString, IsOptional } from "class-validator";
 
 @Entity('materiales')
 export class Material {
@@ -7,11 +8,17 @@ export class Material {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @MaxLength(200)
+    @IsNotEmpty()
+    @IsString()
     @Column({
         length: 200,
     })
     nombre: string;
 
+    @MaxLength(200)
+    @IsOptional()
+    @IsString()
     @Column({
         length: 200,
     })

@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 import { Unidad } from './unidad.entity';
 import { Asignatura } from './asignatura.entity';
+import { IsString, IsNotEmpty, MaxLength } from 'class-validator';
 
 @Entity('contenidos')
 export class Contenido {
@@ -8,7 +9,10 @@ export class Contenido {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @MaxLength(100)
+  @IsNotEmpty()
+  @IsString()
+  @Column({length: 100})
   nombre: string;
 
   @OneToMany(
@@ -21,6 +25,7 @@ export class Contenido {
   @JoinColumn()
   asignatura: Asignatura;
 
+  @IsNotEmpty()
   @Column({ nullable: true })
   asignaturaId: number;
 

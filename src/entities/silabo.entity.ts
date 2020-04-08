@@ -9,12 +9,16 @@ import {
 } from 'typeorm';
 import { Asignatura } from './asignatura.entity';
 import { Descripcion } from './descripcion.entity';
+import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
 
 @Entity('silabos')
 export class Silabo {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @MaxLength(100)
+    @IsNotEmpty()
+    @IsString()
     @Column({
         length: 100,
     })
