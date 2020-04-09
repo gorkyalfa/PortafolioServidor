@@ -18,7 +18,7 @@ export class UnidadesService extends TypeOrmCrudService<Unidad>{
 
     async deleteUnidadAndRelatedSemanas(unidadId: number): Promise<any> {
         const deletedSemanas = await getRepository(Semana).createQueryBuilder('semanas')
-        .delete().from('semanas').where('semanas.unidadId = :unidadId', { unidadId })
+        .delete().from('semanas').where('semanas."unidadId" = :unidadId', { unidadId })
         .execute();
         const deletedUnidad = await getRepository(Unidad).createQueryBuilder('unidades')
         .delete().from('unidades').where('unidades.id = :unidadId', { unidadId })

@@ -1,4 +1,4 @@
-import { Controller, Get, Res, Param, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Res, Param, HttpStatus, Delete, Body } from '@nestjs/common';
 import { SemanasService } from './semanas.service';
 import { Crud } from '@nestjsx/crud';
 import { Semana } from 'src/entities/semana.entity';

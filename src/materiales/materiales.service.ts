@@ -14,4 +14,9 @@ export class MaterialesService extends TypeOrmCrudService<Material> {
         return materiales;
     }
 
+    async deleteManyMateriales(materiales: Material[]): Promise<Material[]> {
+        const eliminados = await this.repo.remove(materiales);
+        return eliminados;
+    }
+
 }

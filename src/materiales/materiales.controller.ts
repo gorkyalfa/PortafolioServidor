@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Delete, Body } from '@nestjs/common';
 import { Material } from 'src/entities/material.entity';
 import { Crud } from '@nestjsx/crud';
 import { MaterialesService } from './materiales.service';
@@ -17,4 +17,9 @@ export class MaterialesController {
 		return this.service.getMaterialesWithTipo();
 	}
 	
+    @Delete('/removeMany')
+    deleteManyMateriales(@Body() materiales: Material[] ): Promise<Material[]> {
+        return this.service.deleteManyMateriales(materiales);
+    } 
+
 }

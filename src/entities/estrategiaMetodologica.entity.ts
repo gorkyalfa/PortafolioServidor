@@ -7,6 +7,7 @@ export class EstrategiaMetodologica {
 
     @PrimaryGeneratedColumn()
     id: number
+    
     @MaxLength(200)
     @IsNotEmpty()
     @IsString()
