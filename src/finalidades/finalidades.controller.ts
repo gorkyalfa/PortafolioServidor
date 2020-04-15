@@ -1,4 +1,4 @@
-import { Controller, Get, Delete, Body } from '@nestjs/common';
+import { Controller, Get, Delete, Body, ValidationPipe } from '@nestjs/common';
 import { Finalidad } from 'src/entities/finalidad.entity';
 import { Crud } from '@nestjsx/crud';
 import { FinalidadesService } from './finalidades.service';
@@ -18,7 +18,7 @@ export class FinalidadesController {
 	}
 
 	@Delete('/removeMany')
-	deleteManyFinalidades(@Body() finalidades: Finalidad[]): Promise<any[]> {
+	deleteManyFinalidades(@Body(ValidationPipe) finalidades: Finalidad[]): Promise<any[]> {
 		return this.service.deleteManyFinalidades(finalidades);
 	}
 
