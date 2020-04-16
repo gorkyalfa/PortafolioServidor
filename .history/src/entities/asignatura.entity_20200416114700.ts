@@ -50,11 +50,6 @@ export class Asignatura {
     asignatura => asignatura.correquisito,
   )
   correquisitos: Asignatura[];
-  
-  @ManyToOne(
-    type => Asignatura,
-    asignatura => asignatura.correquisitos,
-  )
   correquisito: Asignatura;
 
   @OneToMany(
@@ -62,10 +57,5 @@ export class Asignatura {
     asignatura => asignatura.prerequisito,
   )
   prerrequisitos: Asignatura[];
-
-  @ManyToOne(
-    type => Asignatura,
-    asignatura => asignatura.prerrequisitos,
-  )
   prerequisito: Asignatura;
 }
