@@ -1,11 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  OneToMany,
-  OneToOne,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne } from 'typeorm';
 import { Malla } from './malla.entity';
 import { Silabo } from './silabo.entity';
 import { Contenido } from 'src/entities/contenido.entity';
@@ -30,7 +23,7 @@ export class Asignatura {
     length: 20,
   })
   codigo: string;
-
+  
   @IsNumber()
   @Column()
   totalHoras: number;
@@ -45,27 +38,4 @@ export class Asignatura {
   @OneToOne(type => Contenido)
   contenido: Contenido;
 
-  @OneToMany(
-    type => Asignatura,
-    asignatura => asignatura.correquisito,
-  )
-  correquisitos: Asignatura[];
-  
-  @ManyToOne(
-    type => Asignatura,
-    asignatura => asignatura.correquisitos,
-  )
-  correquisito: Asignatura;
-
-  @OneToMany(
-    type => Asignatura,
-    asignatura => asignatura.prerequisito,
-  )
-  prerrequisitos: Asignatura[];
-
-  @ManyToOne(
-    type => Asignatura,
-    asignatura => asignatura.prerrequisitos,
-  )
-  prerequisito: Asignatura;
 }

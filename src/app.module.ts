@@ -36,6 +36,7 @@ import { Finalidad } from 'src/entities/finalidad.entity';
 import { TipoMaterialPopulate1585669066128 } from 'src/migrations/1585669066128-TipoMaterialPopulate';
 import { Descripcion } from './entities/descripcion.entity';
 import { DescripcionesModule } from './descripciones/descripciones.module';
+import { DocenteModule } from './docente/docente.module';
 
 @Module({
   imports: [
@@ -70,6 +71,7 @@ import { DescripcionesModule } from './descripciones/descripciones.module';
     EstrategiasMetodologicasModule,
     FinalidadesModule,
     DescripcionesModule,
+    DocenteModule,
   ],
   controllers: [AppController],
   providers: [],

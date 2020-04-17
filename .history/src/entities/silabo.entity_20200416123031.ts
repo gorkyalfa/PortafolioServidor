@@ -11,7 +11,6 @@ import { Asignatura } from './asignatura.entity';
 import { Docente } from './docente.entity';
 import { Requisito } from './requisito.entity';
 import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
-import { Proceso } from './proceso.entity';
 
 @Entity('silabos')
 export class Silabo {
@@ -77,9 +76,4 @@ N° total de horas:
   })
   objetivoAsignatura: string;
 
-  @OneToMany(
-    type => Proceso,
-    proceso => proceso.silabo,
-  )
-  procesos: Proceso[];
 }
