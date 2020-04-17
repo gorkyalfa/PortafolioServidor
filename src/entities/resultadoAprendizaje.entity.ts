@@ -17,6 +17,7 @@ export class ResultadoAprendizaje {
   @ManyToOne(
     type => Proceso,
     proceso => proceso.resultadosAprendizaje,
+    { eager: false }
   )
   proceso: Proceso;
 
