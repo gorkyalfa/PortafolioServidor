@@ -7,7 +7,6 @@ import {
   OneToMany,
   ManyToOne,
   TreeChildren,
-  Generated,
 } from 'typeorm';
 import { ResultadoAprendizaje } from './resultadoAprendizaje.entity';
 import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
@@ -42,6 +41,7 @@ export class Proceso {
   @OneToMany(
     type => ResultadoAprendizaje,
     resultadoAprendizaje => resultadoAprendizaje.proceso,
+    { eager: true }
   )
   resultadosAprendizaje: ResultadoAprendizaje[];
 }
