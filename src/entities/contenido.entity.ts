@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 import { Unidad } from './unidad.entity';
-import { Asignatura } from './asignatura.entity';
 import { IsString, IsNotEmpty, MaxLength } from 'class-validator';
+import { Silabo } from './silabo.entity';
 
 @Entity('contenidos')
 export class Contenido {
@@ -21,12 +21,12 @@ export class Contenido {
   )
   unidades: Unidad[];
 
-  @OneToOne(type => Asignatura)
+  @OneToOne(type => Silabo)
   @JoinColumn()
-  asignatura: Asignatura;
+  silabo: Silabo;
 
   @IsNotEmpty()
   @Column({ nullable: true })
-  asignaturaId: number;
+  silaboId: number;
 
 }

@@ -12,10 +12,10 @@ import { ContenidosService } from './contenidos.service';
 export class ContenidosController {
     constructor(private service: ContenidosService) {}
 
-    @Get('/:asignaturaId/contenido')
-    getContenidoByAsignatura(
-        @Param('asignaturaId', ParseIntPipe) asignaturaId: number
+    @Get('/:silaboId/contenido')
+    getContenidoBySilabo(
+        @Param('silaboId', ParseIntPipe) silaboId: number
     ) {
-        return this.service.getContenidoByAsignatura(asignaturaId);
+        return this.service.getContenidoBySilabo(silaboId);
     }
 }

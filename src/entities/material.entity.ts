@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { TipoMaterial } from "./tipoMaterial.entity";
 import { MaxLength, IsNotEmpty, IsString, IsOptional } from "class-validator";
+import { Silabo } from "./silabo.entity";
 
 @Entity('materiales')
 export class Material {
@@ -30,4 +31,9 @@ export class Material {
     )
     tipoMaterial: TipoMaterial;
 
+    @ManyToOne(
+        type => Silabo,
+        silabo => silabo.materiales,
+    )
+    silabo: Silabo;
 }

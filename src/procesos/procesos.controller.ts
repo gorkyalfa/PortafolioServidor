@@ -1,16 +1,14 @@
 import {
   Controller,
   Get,
-  Res,
   Param,
-  HttpStatus,
   Delete,
   ParseIntPipe,
 } from '@nestjs/common';
 import { Crud } from '@nestjsx/crud';
 import { Proceso } from 'src/entities/proceso.entity';
 import { ProcesosService } from './procesos.service';
-import { getManager } from 'typeorm';
+import { Indice } from './indice.model';
 
 @Crud({
   model: {
@@ -41,4 +39,10 @@ export class ProcesosController {
   ): Promise<any[]> {
     return this.service.removeProcesoAndClosure(procesoId);
   }
+
+  @Get('/indices')
+  getIndexesOfTree(): Promise<Indice[]> {
+    return this.service.getIndexesOfTree();
+  }
+  
 }

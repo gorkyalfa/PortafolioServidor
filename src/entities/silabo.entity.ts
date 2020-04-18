@@ -12,6 +12,9 @@ import { Docente } from './docente.entity';
 import { Requisito } from './requisito.entity';
 import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
 import { Proceso } from './proceso.entity';
+import { Finalidad } from 'src/entities/finalidad.entity';
+import { Contenido } from 'src/entities/contenido.entity';
+import { Material } from 'src/entities/material.entity';
 
 @Entity('silabos')
 export class Silabo {
@@ -82,4 +85,19 @@ N° total de horas:
     proceso => proceso.silabo,
   )
   procesos: Proceso[];
+
+  @OneToOne(type => Contenido)
+  contenido: Contenido;
+
+  @OneToMany(
+    type => Finalidad,
+    finalidades => finalidades.silabo,
+  )
+  finalidades: Finalidad[];
+
+  @OneToMany(
+    type => Material,
+    materiales => materiales.silabo,
+  )
+  materiales: Material[];
 }

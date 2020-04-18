@@ -33,10 +33,11 @@ import { EstrategiasMetodologicasModule } from './estrategias-metodologicas/estr
 import { FinalidadesModule } from './finalidades/finalidades.module';
 import { EstrategiaMetodologica } from 'src/entities/estrategiaMetodologica.entity';
 import { Finalidad } from 'src/entities/finalidad.entity';
-import { TipoMaterialPopulate1585669066128 } from 'src/migrations/1585669066128-TipoMaterialPopulate';
 import { Descripcion } from './entities/descripcion.entity';
 import { DescripcionesModule } from './descripciones/descripciones.module';
 import { DocenteModule } from './docente/docente.module';
+import { Docente } from './entities/docente.entity';
+import { Requisito } from './entities/requisito.entity';
 
 @Module({
   imports: [
@@ -51,7 +52,7 @@ import { DocenteModule } from './docente/docente.module';
                  Malla, Modalidad, PeriodoAcademico, Proceso, 
                  ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
                  Contenido, Unidad, Material, EstrategiaMetodologica,
-                 Finalidad],
+                 Finalidad, Docente, Requisito],
       synchronize: true,
       logging: true
     }),

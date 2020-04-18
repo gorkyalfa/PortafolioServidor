@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 import { EstrategiaMetodologica } from "./estrategiaMetodologica.entity";
 import { MaxLength, IsNotEmpty, IsString } from "class-validator";
+import { Silabo } from './silabo.entity';
 
 @Entity('finalidades')
 export class Finalidad {
@@ -20,4 +21,11 @@ export class Finalidad {
         
     @Column({ nullable: true })
     estrategiaMetodologicaId: number;
+
+    @ManyToOne(
+        type => Silabo,
+        silabo => silabo.finalidades,
+    )
+    silabo: Silabo;
+    
 }

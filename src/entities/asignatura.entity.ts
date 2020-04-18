@@ -8,7 +8,6 @@ import {
 } from 'typeorm';
 import { Malla } from './malla.entity';
 import { Silabo } from './silabo.entity';
-import { Contenido } from 'src/entities/contenido.entity';
 import { IsNotEmpty, MaxLength, IsString, IsNumber } from 'class-validator';
 
 @Entity('asignaturas')
@@ -42,8 +41,6 @@ export class Asignatura {
   malla: Malla;
 
   prerrequisito: Silabo;
-  @OneToOne(type => Contenido)
-  contenido: Contenido;
 
   @OneToMany(
     type => Asignatura,

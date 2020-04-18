@@ -7,6 +7,7 @@ import { ResultadoAprendizaje } from 'src/entities/resultadoAprendizaje.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([ResultadoAprendizaje])],
   controllers: [ResultadosAprendizajeController],
-  providers: [ResultadosAprendizajeService]
+  providers: [ResultadosAprendizajeService],
+  exports: [ResultadosAprendizajeService]
 })
 export class ResultadosAprendizajeModule {}

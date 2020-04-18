@@ -9,11 +9,11 @@ export class ContenidosService extends TypeOrmCrudService<Contenido>{
         super(repo);
     }
 
-    async getContenidoByAsignatura(asignaturaId: number): Promise<Contenido[]> {
-        const contenido = await this.find({asignaturaId: asignaturaId});
+    async getContenidoBySilabo(silaboId: number): Promise<Contenido[]> {
+        const contenido = await this.find({silaboId: silaboId});
         
         if(!contenido) {
-            this.throwNotFoundException(`Contenido de id ${asignaturaId} no encontrado.`);
+            this.throwNotFoundException(`Contenido de silaboId ${silaboId} no encontrado.`);
         }
         return contenido;
     }

@@ -26,7 +26,7 @@ export class Docente {
   @Column({
     length: 50,
   })
-  appellidoPaterno: string;
+  apellidoPaterno: string;
 
   @MaxLength(50)
   @IsNotEmpty()
@@ -34,7 +34,7 @@ export class Docente {
   @Column({
     length: 50,
   })
-  appellidoMaterno: string;
+  apellidoMaterno: string;
 
   @OneToMany(
     type => Silabo,

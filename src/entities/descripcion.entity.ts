@@ -23,7 +23,7 @@ export class Descripcion {
   })
   objetivo: string;
 
-  @OneToOne(type => Silabo, silabo => silabo.descripcion)
-  silabo: Silabo;
+  //@OneToOne(type => Silabo, silabo => silabo.descripcion)
+  //silabo: Silabo;
 
 }
