@@ -1,5 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
+import { Asignatura } from './asignatura.entity';
+import { Silabo } from './silabo.entity';
 
 @Entity('modalidades')
 export class Modalidad {
@@ -11,4 +13,16 @@ export class Modalidad {
   @IsString()
   @Column()
   nombre: string;
+
+  @OneToMany(
+    type => Asignatura,
+    asignatura => asignatura.modalidad,
+  )
+  asignaturas: Asignatura[];
+
+  @OneToMany(
+    type => Silabo,
+    silabo => silabo.modalidad,
+  )
+  silabos: Silabo[];
 }

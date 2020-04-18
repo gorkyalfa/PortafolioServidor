@@ -34,9 +34,9 @@ import { FinalidadesModule } from './finalidades/finalidades.module';
 import { EstrategiaMetodologica } from 'src/entities/estrategiaMetodologica.entity';
 import { Finalidad } from 'src/entities/finalidad.entity';
 import { TipoMaterialPopulate1585669066128 } from 'src/migrations/1585669066128-TipoMaterialPopulate';
-import { Descripcion } from './entities/descripcion.entity';
-import { DescripcionesModule } from './descripciones/descripciones.module';
 import { DocenteModule } from './docente/docente.module';
+import { Docente } from './entities/docente.entity';
+import { Requisito } from './entities/requisito.entity';
 
 @Module({
   imports: [
@@ -47,8 +47,8 @@ import { DocenteModule } from './docente/docente.module';
       username: 'postgres',
       password: 'postgres',
       database: 'prueba',
-      entities: [Asignatura, Carrera, Descripcion, Evidencia, Instituto,
-                 Malla, Modalidad, PeriodoAcademico, Proceso, 
+      entities: [Asignatura, Carrera, Docente ,Evidencia, Instituto,
+                 Malla, Modalidad, PeriodoAcademico, Proceso, Requisito, 
                  ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
                  Contenido, Unidad, Material, EstrategiaMetodologica,
                  Finalidad],
@@ -70,7 +70,6 @@ import { DocenteModule } from './docente/docente.module';
     MaterialesModule,
     EstrategiasMetodologicasModule,
     FinalidadesModule,
-    DescripcionesModule,
     DocenteModule,
   ],
   controllers: [AppController],

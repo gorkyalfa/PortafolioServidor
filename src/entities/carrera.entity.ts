@@ -8,6 +8,8 @@ import {
 import { Instituto } from './instituto.entity';
 import { Malla } from './malla.entity';
 import { IsNotEmpty, MaxLength, IsString } from 'class-validator';
+import { Asignatura } from './asignatura.entity';
+import { Silabo } from './silabo.entity';
 
 @Entity('carreras')
 export class Carrera {
@@ -33,4 +35,16 @@ export class Carrera {
     malla => malla.carrera,
   )
   mallas: Malla[];
+
+  @OneToMany(
+    type => Asignatura,
+    asignatura => asignatura.carrera,
+  )
+  asignaturas: Asignatura[];
+
+  @OneToMany(
+    type => Silabo,
+    silabo => silabo.carrera,
+  )
+  silabos: Silabo[];
 }

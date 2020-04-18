@@ -5,11 +5,14 @@ import {
   ManyToOne,
   OneToMany,
   OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Malla } from './malla.entity';
-import { Silabo } from './silabo.entity';
 import { Contenido } from 'src/entities/contenido.entity';
 import { IsNotEmpty, MaxLength, IsString, IsNumber } from 'class-validator';
+import { PeriodoAcademico } from './periodoAcademico.entity';
+import { Modalidad } from './modalidad.entity';
+import { Carrera } from './carrera.entity';
 
 @Entity('asignaturas')
 export class Asignatura {
@@ -31,9 +34,61 @@ export class Asignatura {
   })
   codigo: string;
 
+  @ManyToOne(
+    type => Carrera,
+    carrera => carrera.asignaturas,
+  )
+  carrera: Carrera;
+
+  @ManyToOne(
+    type => PeriodoAcademico,
+    periodoAcademico => periodoAcademico.asignaturas,
+  )
+  periodoAcademico: PeriodoAcademico;
+
+  @MaxLength(20)
+  @IsNotEmpty()
+  @Column({
+    length: 20,
+  })
+  periodoLectivo: string;
+
+  @ManyToOne(
+    type => Modalidad,
+    modalidad => modalidad.asignaturas,
+  )
+  modalidad: Modalidad;
+
+  @MaxLength(40)
+  @IsNotEmpty()
+  @Column({
+    length: 40,
+  })
+  unidadOrganizacionCurricular: string;
+
+  @MaxLength(40)
+  @IsNotEmpty()
+  @Column({
+    length: 40,
+  })
+  campoFormacion: string;
+
   @IsNumber()
   @Column()
-  totalHoras: number;
+  totalHorasDocencia: number;
+
+  @IsNumber()
+  @Column()
+  totalHorasAutonomas: number;
+
+  @IsNumber()
+  @Column()
+  totalHorasPracticasAprendizaje: number;
+
+  @IsNumber()
+  @Column()
+  numeroTotalHoras: number;
+
 
   @ManyToOne(
     type => Malla,
@@ -41,9 +96,9 @@ export class Asignatura {
   )
   malla: Malla;
 
-  prerrequisito: Silabo;
   @OneToOne(type => Contenido)
-  contenido: Contenido;
+  @JoinColumn()
+  contenido: Contenido;  
 
   @OneToMany(
     type => Asignatura,
