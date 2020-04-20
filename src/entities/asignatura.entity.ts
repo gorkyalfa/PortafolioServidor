@@ -27,10 +27,10 @@ export class Asignatura {
   })
   nombre: string;
 
-  @MaxLength(20)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 20,
+    length: 50,
   })
   codigo: string;
 
@@ -46,10 +46,10 @@ export class Asignatura {
   )
   periodoAcademico: PeriodoAcademico;
 
-  @MaxLength(20)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 20,
+    length: 50,
   })
   periodoLectivo: string;
 
@@ -59,17 +59,17 @@ export class Asignatura {
   )
   modalidad: Modalidad;
 
-  @MaxLength(40)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 40,
+    length: 50,
   })
   unidadOrganizacionCurricular: string;
 
-  @MaxLength(40)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 40,
+    length: 50,
   })
   campoFormacion: string;
 
