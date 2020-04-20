@@ -10,11 +10,15 @@ import {
 import { Asignatura } from './asignatura.entity';
 import { Docente } from './docente.entity';
 import { Requisito } from './requisito.entity';
-import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
+import { MaxLength, IsNotEmpty, IsString, IsNumber } from 'class-validator';
 import { Proceso } from './proceso.entity';
 import { Finalidad } from 'src/entities/finalidad.entity';
 import { Contenido } from 'src/entities/contenido.entity';
 import { Material } from 'src/entities/material.entity';
+import { PeriodoAcademico } from './periodoAcademico.entity';
+import { Modalidad } from './modalidad.entity';
+import { Malla } from './malla.entity';
+import { Carrera } from './carrera.entity';
 
 @Entity('silabos')
 export class Silabo {
@@ -25,21 +29,81 @@ export class Silabo {
   @JoinColumn()
   asignatura: Asignatura;
 
-  // respetar el orden
-  /* TODO hacer campos y copiar desde asignatura
-  Nombre:
-Código:
-Carrera:
-Período académico:
-Período lectivo: // este se llena escogiendo, la primera opción es el periodo lectivo actual
-Modalidad:
-Unidad de organización curricular:
-Campo de formación:
-Horas de docencia:
-Horas de trabajo autónomo:
-Horas de prácticas de aprendizaje:
-N° total de horas:
-*/
+  @MaxLength(100)
+  @IsNotEmpty()
+  @IsString()
+  @Column({
+    length: 100,
+  })
+  nombre: string;
+
+  @MaxLength(20)
+  @IsNotEmpty()
+  @Column({
+    length: 20,
+  })
+  codigo: string;
+
+  @ManyToOne(
+    type => Carrera,
+    carrera => carrera.silabos,
+  )
+  carrera: Carrera;
+
+  @ManyToOne(
+    type => PeriodoAcademico,
+    periodoAcademico => periodoAcademico.silabos,
+  )
+  periodoAcademico: PeriodoAcademico;
+
+  @MaxLength(20)
+  @IsNotEmpty()
+  @Column({
+    length: 20,
+  })
+  periodoLectivo: string;
+
+  @ManyToOne(
+    type => Modalidad,
+    modalidad => modalidad.silabos,
+  )
+  modalidad: Modalidad;
+
+  @MaxLength(40)
+  @IsNotEmpty()
+  @Column({
+    length: 40,
+  })
+  unidadOrganizacionCurricular: string;
+
+  @MaxLength(40)
+  @IsNotEmpty()
+  @Column({
+    length: 40,
+  })
+  campoFormacion: string;
+
+  @IsNumber()
+  @Column()
+  totalHorasDocencia: number;
+
+  @IsNumber()
+  @Column()
+  totalHorasAutonomas: number;
+
+  @IsNumber()
+  @Column()
+  totalHorasPracticasAprendizaje: number;
+
+  @IsNumber()
+  @Column()
+  numeroTotalHoras: number;
+
+  @ManyToOne(
+    type => Malla,
+    malla => malla.silabos,
+  )
+  malla: Malla;
 
   @ManyToOne(
     type => Docente,

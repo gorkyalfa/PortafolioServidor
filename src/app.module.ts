@@ -33,8 +33,6 @@ import { EstrategiasMetodologicasModule } from './estrategias-metodologicas/estr
 import { FinalidadesModule } from './finalidades/finalidades.module';
 import { EstrategiaMetodologica } from 'src/entities/estrategiaMetodologica.entity';
 import { Finalidad } from 'src/entities/finalidad.entity';
-import { Descripcion } from './entities/descripcion.entity';
-import { DescripcionesModule } from './descripciones/descripciones.module';
 import { DocenteModule } from './docente/docente.module';
 import { Docente } from './entities/docente.entity';
 import { Requisito } from './entities/requisito.entity';
@@ -48,8 +46,8 @@ import { Requisito } from './entities/requisito.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'prueba',
-      entities: [Asignatura, Carrera, Descripcion, Evidencia, Instituto,
-                 Malla, Modalidad, PeriodoAcademico, Proceso, 
+      entities: [Asignatura, Carrera, Docente ,Evidencia, Instituto,
+                 Malla, Modalidad, PeriodoAcademico, Proceso, Requisito, 
                  ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
                  Contenido, Unidad, Material, EstrategiaMetodologica,
                  Finalidad, Docente, Requisito],
@@ -71,7 +69,6 @@ import { Requisito } from './entities/requisito.entity';
     MaterialesModule,
     EstrategiasMetodologicasModule,
     FinalidadesModule,
-    DescripcionesModule,
     DocenteModule,
   ],
   controllers: [AppController],
