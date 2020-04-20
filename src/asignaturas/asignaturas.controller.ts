@@ -15,6 +15,12 @@ export class AsignaturasController {
     return res.status(HttpStatus.OK).json(correquisitos);
 }  
 
+@Get('/:id/prerequisitos')
+  async readPrerequisitos(@Param('id') id: number, @Res() res: any): Promise<Asignatura> {
+    const prerequisitos = await this.service.findPrerequisitos(id);
+    return res.status(HttpStatus.OK).json(prerequisitos);
+}  
+
 @Get('/objetivoDetalle')
 readObjetiboDetalle(@Param('id') id:number)  {
   return this.service.findObjetiboDetalle(id)

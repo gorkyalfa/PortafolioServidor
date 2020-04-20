@@ -20,10 +20,22 @@ async findObjetiboDetalle (id:number) {
 
 async findCorrequisitos(id: number): Promise<Asignatura> {
   const correquisitos = await getRepository(Asignatura)
- .createQueryBuilder("asignatura")
- .innerJoinAndSelect("asignatura.correquisitos", "correquisitos")
+  .createQueryBuilder("asignatura")
+ .innerJoinAndSelect("asignatura.correquisito", "correquisitos")
  .where("asignatura.id = :id", { id })
  .getOne();
+console.log(correquisitos);
  return correquisitos;
 }
+
+async findPrerequisitos(id: number): Promise<Asignatura> {
+  const prerequisitos = await getRepository(Asignatura)
+  .createQueryBuilder("asignatura")
+ .innerJoinAndSelect("asignatura.prerequisito", "prerequisitos")
+ .where("asignatura.id = :id", { id })
+ .getOne();
+console.log(prerequisitos);
+ return prerequisitos;
+}
+
 }
