@@ -35,10 +35,10 @@ export class Silabo {
   })
   nombre: string;
 
-  @MaxLength(20)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 20,
+    length: 50,
   })
   codigo: string;
 
@@ -54,10 +54,10 @@ export class Silabo {
   )
   periodoAcademico: PeriodoAcademico;
 
-  @MaxLength(20)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 20,
+    length: 50,
   })
   periodoLectivo: string;
 
@@ -67,17 +67,17 @@ export class Silabo {
   )
   modalidad: Modalidad;
 
-  @MaxLength(40)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 40,
+    length: 50,
   })
   unidadOrganizacionCurricular: string;
 
-  @MaxLength(40)
+  @MaxLength(50)
   @IsNotEmpty()
   @Column({
-    length: 40,
+    length: 50,
   })
   campoFormacion: string;
 
@@ -131,7 +131,6 @@ export class Silabo {
   prerrequisitos: Requisito[];
 
   @MaxLength(100)
-  @IsNotEmpty()
   @IsString()
   @Column({
     length: 1000,
@@ -139,7 +138,6 @@ export class Silabo {
   descripcionAsignatura: string;
 
   @MaxLength(100)
-  @IsNotEmpty()
   @IsString()
   @Column({
     length: 1000,
