@@ -8,7 +8,6 @@ import {
 import { Evidencia } from './evidencia.entity';
 import { Proceso } from './proceso.entity';
 import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
-import { TipoContribucion } from './tipoContribucion';
 
 @Entity('resultados_aprendizaje')
 export class ResultadoAprendizaje {
@@ -33,16 +32,10 @@ export class ResultadoAprendizaje {
   @Column('int', { nullable: true })
   evidenciaId: number;
 
-  // TODO: Un resultado de aprendizaje podría tener una o muchas evidencias
-  // podrías ser asi
-  // evidencias: string[];
   @ManyToOne(
     type => Evidencia,
     evidencia => evidencia.resultadosAprendizaje,
   )
   @JoinColumn({ name: 'evidenciaId' })
   evidencia: Evidencia;
-
-  @Column('int')
-  contribucion: TipoContribucion;
 }

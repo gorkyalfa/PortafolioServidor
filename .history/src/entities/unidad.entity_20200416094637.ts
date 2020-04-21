@@ -28,14 +28,10 @@ export class Unidad {
   )
   semanas: Semana[];
 
-  // TODO: seria solamente de calculo pero no almacenamiento
   @IsNumber()
   @Column({
       nullable: true
   })
   horasTotales: number;
 
-  // TODO: son campo calculados de los detalles
-  // redundancia controlada
-  // Docencia: 15, Práctica: 15, Autónoma: 5, Total: 35
 }

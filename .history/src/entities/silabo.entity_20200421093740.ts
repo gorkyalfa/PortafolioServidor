@@ -19,8 +19,6 @@ import { PeriodoAcademico } from './periodoAcademico.entity';
 import { Modalidad } from './modalidad.entity';
 import { Malla } from './malla.entity';
 import { Carrera } from './carrera.entity';
-import { Bibliografia } from './bibliografia.entity';
-import { Evaluacion } from './evaluacion.entity';
 
 @Entity('silabos')
 export class Silabo {
@@ -111,20 +109,15 @@ export class Silabo {
 
   @ManyToOne(
     type => Docente,
-    docente => docente.silabosPreparados,
+    docente => docente.silabos,
   )
   docente: Docente;
 
-  @ManyToOne(
-    type => Docente,
-    docente => docente.silabosAprobados,
-  )
-  aprobador: Docente;
-
-  // Aquí copiar la información de correquisitos y prerequisitos
+  // TODO: Aquí copiar la información de correquisitos y prerequisitos
   // de la asignatura solo las columnas que coinciden osea el nombre y el código
   // estamos duplicando por si a alguien se le ocurre reorganizar la malla,
   // el silabo queda como cuando se creo.
+
   @OneToMany(
     type => Requisito,
     requisito => requisito.silabo,
@@ -159,7 +152,7 @@ export class Silabo {
 
   @OneToOne(type => Contenido)
   contenido: Contenido;
-  // TODO: reemplazar por estrategia metodologica y finalidad no existe
+
   @OneToMany(
     type => Finalidad,
     finalidades => finalidades.silabo,
@@ -171,17 +164,4 @@ export class Silabo {
     materiales => materiales.silabo,
   )
   materiales: Material[];
-
-  // TODO: many to one
-  evaluacion: Evaluacion;
-
-  // TODO: many to many
-  bibliografia: Bibliografia[];
-
-  @MaxLength(500)
-  @IsString()
-  @Column({
-    length: 500,
-  })
-  observacion: string;
 }

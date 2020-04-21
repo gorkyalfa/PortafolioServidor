@@ -20,7 +20,6 @@ import { Modalidad } from './modalidad.entity';
 import { Malla } from './malla.entity';
 import { Carrera } from './carrera.entity';
 import { Bibliografia } from './bibliografia.entity';
-import { Evaluacion } from './evaluacion.entity';
 
 @Entity('silabos')
 export class Silabo {

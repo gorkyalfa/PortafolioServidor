@@ -20,7 +20,6 @@ export class EstrategiaMetodologica {
     @Column({nullable: true, length: 350})
     descripcion: string;
 
-    // TODO: esto es un string, de hecho es la descripcion
     @OneToOne(type => Finalidad)
     finalidad: Finalidad;
 

@@ -8,7 +8,7 @@ import {
 import { Evidencia } from './evidencia.entity';
 import { Proceso } from './proceso.entity';
 import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
-import { TipoContribucion } from './tipoContribucion';
+import { TipoContribucion } from './TipoContribucion';
 
 @Entity('resultados_aprendizaje')
 export class ResultadoAprendizaje {

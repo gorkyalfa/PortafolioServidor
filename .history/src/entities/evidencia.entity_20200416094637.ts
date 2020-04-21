@@ -14,7 +14,6 @@ export class Evidencia {
   })
   nombre: string;
 
-  // TODO: al reves many to one
   @OneToMany(
     type => ResultadoAprendizaje,
     resultadosAprendizaje => resultadosAprendizaje.evidencia

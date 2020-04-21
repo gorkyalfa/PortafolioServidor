@@ -19,8 +19,6 @@ import { PeriodoAcademico } from './periodoAcademico.entity';
 import { Modalidad } from './modalidad.entity';
 import { Malla } from './malla.entity';
 import { Carrera } from './carrera.entity';
-import { Bibliografia } from './bibliografia.entity';
-import { Evaluacion } from './evaluacion.entity';
 
 @Entity('silabos')
 export class Silabo {
@@ -171,13 +169,7 @@ export class Silabo {
     materiales => materiales.silabo,
   )
   materiales: Material[];
-
-  // TODO: many to one
-  evaluacion: Evaluacion;
-
-  // TODO: many to many
-  bibliografia: Bibliografia[];
-
+  
   @MaxLength(500)
   @IsString()
   @Column({
