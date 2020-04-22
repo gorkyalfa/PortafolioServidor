@@ -10,7 +10,7 @@ import {
 import { Asignatura } from './asignatura.entity';
 import { Docente } from './docente.entity';
 import { Requisito } from './requisito.entity';
-import { MaxLength, IsNotEmpty, IsString, IsNumber } from 'class-validator';
+import { MaxLength, IsNotEmpty, IsString, IsNumber, IsOptional } from 'class-validator';
 import { Proceso } from './proceso.entity';
 import { Finalidad } from 'src/entities/finalidad.entity';
 import { Contenido } from 'src/entities/contenido.entity';
@@ -180,8 +180,10 @@ export class Silabo {
 
   @MaxLength(500)
   @IsString()
+  @IsOptional()
   @Column({
     length: 500,
+    nullable: true
   })
   observacion: string;
 }
