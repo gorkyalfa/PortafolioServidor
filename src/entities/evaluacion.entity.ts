@@ -1,12 +1,21 @@
 import { Equivalencia } from "./equivalencia.entity";
 import { Silabo } from "./silabo.entity";
+import { OneToMany, PrimaryGeneratedColumn, Entity } from "typeorm";
 
-export class Evaluacion{
-    id: number;
+@Entity('evaluaciones')
+export class Evaluacion {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    // TODO: uno a muchos
-    esquivalencias: Equivalencia[];
+  @OneToMany(
+    type => Equivalencia,
+    equivalencia => equivalencia.evaluacion,
+  )
+  esquivalencias: Equivalencia[];
 
-    // TODO: one to many
-    silabos: Silabo[];
+  @OneToMany(
+    type => Silabo,
+    silabo => silabo.evaluacion,
+  )
+  silabos: Silabo[];
 }

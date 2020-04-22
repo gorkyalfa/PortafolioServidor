@@ -19,10 +19,4 @@ export class Modalidad {
     asignatura => asignatura.modalidad,
   )
   asignaturas: Asignatura[];
-
-  @OneToMany(
-    type => Silabo,
-    silabo => silabo.modalidad,
-  )
-  silabos: Silabo[];
 }

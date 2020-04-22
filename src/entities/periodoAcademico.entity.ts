@@ -3,7 +3,7 @@ import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
 import { Asignatura } from './asignatura.entity';
 import { Silabo } from './silabo.entity';
 
-@Entity('periodos-academicos')
+@Entity('periodos_academicos')
 export class PeriodoAcademico {
   @PrimaryGeneratedColumn()
   id: number;

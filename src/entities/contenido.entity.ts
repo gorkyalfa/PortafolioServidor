@@ -12,7 +12,7 @@ export class Contenido {
   @MaxLength(100)
   @IsNotEmpty()
   @IsString()
-  @Column({length: 100})
+  @Column({ length: 100 })
   nombre: string;
 
   @OneToMany(
