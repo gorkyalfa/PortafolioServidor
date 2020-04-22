@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { IsNotEmpty, MaxLength, IsString } from 'class-validator';
 import { Silabo } from './silabo.entity';
+import { Asignatura } from './asignatura.entity';
 
 @Entity('requisitos')
 export class Requisito {
@@ -22,6 +23,28 @@ export class Requisito {
   })
   codigo: string;
 
-  // TODO: esto hay que revisar para mapear bien en la base
-  silabo: Silabo;
+  @ManyToOne(
+    type => Silabo,
+    silabo => silabo.correquisitos,
+  )
+  silaboCorrequisito: Silabo;
+
+  @ManyToOne(
+    type => Silabo,
+    silabo => silabo.prerrequisitos,
+  )
+  silaboPrerrequisito: Silabo;
+
+  @ManyToOne(
+    type => Asignatura,
+    asignatura => asignatura.prerrequisitos,
+  )
+  asignaturaPrerrequisito: Asignatura;
+
+  @ManyToOne(
+    type => Asignatura,
+    asignatura => asignatura.correquisitos,
+  )
+  asignaturaCorrequisito: Asignatura;
+
 }

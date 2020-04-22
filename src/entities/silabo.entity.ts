@@ -6,20 +6,21 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import { Asignatura } from './asignatura.entity';
 import { Docente } from './docente.entity';
 import { Requisito } from './requisito.entity';
 import { MaxLength, IsNotEmpty, IsString, IsNumber, IsOptional } from 'class-validator';
 import { Proceso } from './proceso.entity';
-import { Finalidad } from 'src/entities/finalidad.entity';
 import { Contenido } from 'src/entities/contenido.entity';
 import { Material } from 'src/entities/material.entity';
 import { PeriodoAcademico } from './periodoAcademico.entity';
-import { Modalidad } from './modalidad.entity';
-import { Malla } from './malla.entity';
 import { Carrera } from './carrera.entity';
 import { Bibliografia } from './bibliografia.entity';
+import { EstrategiaMetodologica } from './estrategiaMetodologica.entity';
+import { PeriodoLectivo } from './periodoLectivo.entity';
 import { Evaluacion } from './evaluacion.entity';
 
 @Entity('silabos')
@@ -59,18 +60,11 @@ export class Silabo {
   periodoAcademico: PeriodoAcademico;
 
   // TODO : esto es una entidad inicio, fin, nombre (calculado ej: Noviembre 2019 - Abril 2020)
-  @MaxLength(50)
-  @IsNotEmpty()
-  @Column({
-    length: 50,
-  })
-  periodoLectivo: string;
-
   @ManyToOne(
-    type => Modalidad,
-    modalidad => modalidad.silabos,
+    type => PeriodoLectivo,
+    periodoLectivo => periodoLectivo.silabos,
   )
-  modalidad: Modalidad;
+  periodoLectivo: PeriodoLectivo;
 
   @MaxLength(50)
   @IsNotEmpty()
@@ -102,13 +96,6 @@ export class Silabo {
   @Column()
   numeroTotalHoras: number;
 
-  // TODO : esto eliminar
-  @ManyToOne(
-    type => Malla,
-    malla => malla.silabos,
-  )
-  malla: Malla;
-
   @ManyToOne(
     type => Docente,
     docente => docente.silabosPreparados,
@@ -121,19 +108,15 @@ export class Silabo {
   )
   aprobador: Docente;
 
-  // Aquí copiar la información de correquisitos y prerequisitos
-  // de la asignatura solo las columnas que coinciden osea el nombre y el código
-  // estamos duplicando por si a alguien se le ocurre reorganizar la malla,
-  // el silabo queda como cuando se creo.
   @OneToMany(
     type => Requisito,
-    requisito => requisito.silabo,
+    requisito => requisito.silaboCorrequisito,
   )
   correquisitos: Requisito[];
 
   @OneToMany(
     type => Requisito,
-    requisito => requisito.silabo,
+    requisito => requisito.silaboPrerrequisito,
   )
   prerrequisitos: Requisito[];
 
@@ -159,12 +142,12 @@ export class Silabo {
 
   @OneToOne(type => Contenido)
   contenido: Contenido;
-  // TODO: reemplazar por estrategia metodologica y finalidad no existe
+
   @OneToMany(
-    type => Finalidad,
-    finalidades => finalidades.silabo,
+    type => EstrategiaMetodologica,
+    estrategiasMetodologicas => estrategiasMetodologicas.silabo,
   )
-  finalidades: Finalidad[];
+  estrategiasMetodologicas: EstrategiaMetodologica[];
 
   @OneToMany(
     type => Material,
@@ -172,11 +155,17 @@ export class Silabo {
   )
   materiales: Material[];
 
-  // TODO: many to one
+  @ManyToOne(
+    type => Evaluacion,
+    evaluacion => evaluacion.silabos,
+  )
   evaluacion: Evaluacion;
 
-  // TODO: many to many
-  bibliografia: Bibliografia[];
+  @ManyToMany(
+    type => Bibliografia,
+    bibliografia => bibliografia.silabos)
+  @JoinTable()
+  bibliografias: Bibliografia[];
 
   @MaxLength(500)
   @IsString()

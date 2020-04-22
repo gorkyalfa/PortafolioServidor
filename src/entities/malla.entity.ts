@@ -8,7 +8,6 @@ import {
 import { Carrera } from './carrera.entity';
 import { Asignatura } from './asignatura.entity';
 import { MaxLength, IsString, IsNotEmpty } from 'class-validator';
-import { Silabo } from './silabo.entity';
 
 @Entity('mallas')
 export class Malla {
@@ -34,10 +33,4 @@ export class Malla {
     asignatura => asignatura.malla,
   )
   asignaturas: Asignatura[];
-  
-  @OneToMany(
-    type => Silabo,
-    silabo => silabo.malla,
-  )
-  silabos: Silabo[];
 }

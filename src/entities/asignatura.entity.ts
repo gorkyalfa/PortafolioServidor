@@ -4,15 +4,13 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
-  OneToOne,
-  JoinColumn,
 } from 'typeorm';
 import { Malla } from './malla.entity';
-import { Silabo } from './silabo.entity';
 import { IsNotEmpty, MaxLength, IsString, IsNumber } from 'class-validator';
 import { PeriodoAcademico } from './periodoAcademico.entity';
 import { Modalidad } from './modalidad.entity';
 import { Carrera } from './carrera.entity';
+import { Requisito } from './requisito.entity';
 
 @Entity('asignaturas')
 export class Asignatura {
@@ -97,26 +95,14 @@ export class Asignatura {
   malla: Malla;
 
   @OneToMany(
-    type => Asignatura,
-    asignatura => asignatura.correquisito,
+    type => Requisito,
+    requisito => requisito.asignaturaPrerrequisito,
   )
-  correquisitos: Asignatura[];
-  
-  @ManyToOne(
-    type => Asignatura,
-    asignatura => asignatura.correquisitos,
-  )
-  correquisito: Asignatura;
+  prerrequisitos: Requisito[];
 
   @OneToMany(
-    type => Asignatura,
-    asignatura => asignatura.prerequisito,
+    type => Requisito,
+    requisito => requisito.asignaturaCorrequisito,
   )
-  prerrequisitos: Asignatura[];
-
-  @ManyToOne(
-    type => Asignatura,
-    asignatura => asignatura.prerrequisitos,
-  )
-  prerequisito: Asignatura;
+  correquisitos: Requisito[];
 }

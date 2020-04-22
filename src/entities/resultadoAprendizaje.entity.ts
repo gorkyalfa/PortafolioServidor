@@ -3,7 +3,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
   ManyToOne,
-  JoinColumn,
+  OneToMany,
 } from 'typeorm';
 import { Evidencia } from './evidencia.entity';
 import { Proceso } from './proceso.entity';
@@ -33,15 +33,11 @@ export class ResultadoAprendizaje {
   @Column('int', { nullable: true })
   evidenciaId: number;
 
-  // TODO: Un resultado de aprendizaje podría tener una o muchas evidencias
-  // podrías ser asi
-  // evidencias: string[];
-  @ManyToOne(
+  @OneToMany(
     type => Evidencia,
-    evidencia => evidencia.resultadosAprendizaje,
+    evidencia => evidencia.resultadoAprendizaje,
   )
-  @JoinColumn({ name: 'evidenciaId' })
-  evidencia: Evidencia;
+  evidencias: Evidencia[];
 
   @Column('int')
   contribucion: TipoContribucion;

@@ -36,6 +36,10 @@ import { Finalidad } from 'src/entities/finalidad.entity';
 import { DocenteModule } from './docente/docente.module';
 import { Docente } from './entities/docente.entity';
 import { Requisito } from './entities/requisito.entity';
+import { PeriodoLectivo } from './entities/periodoLectivo.entity';
+import { Evaluacion } from './entities/evaluacion.entity';
+import { Equivalencia } from './entities/equivalencia.entity';
+import { Bibliografia } from './entities/bibliografia.entity';
 
 @Module({
   imports: [
@@ -46,11 +50,11 @@ import { Requisito } from './entities/requisito.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'prueba',
-      entities: [Asignatura, Carrera, Docente ,Evidencia, Instituto,
-                 Malla, Modalidad, PeriodoAcademico, Proceso, Requisito, 
-                 ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
-                 Contenido, Unidad, Material, EstrategiaMetodologica,
-                 Finalidad, Docente, Requisito],
+      entities: [Asignatura, Bibliografia, Carrera, Docente, Equivalencia, Evaluacion, Evidencia, Instituto,
+        Malla, Modalidad, PeriodoAcademico, PeriodoLectivo, Proceso, Requisito,
+        ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
+        Contenido, Unidad, Material, EstrategiaMetodologica,
+        Finalidad, Docente, Requisito],
       synchronize: true,
       logging: true
     }),

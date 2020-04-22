@@ -23,7 +23,7 @@ export class Proceso {
     silabo => silabo.procesos,
   )
   silabo: Silabo;
-  
+
   @TreeParent()
   procesoAncestro: Proceso;
 

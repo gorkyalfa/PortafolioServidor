@@ -18,10 +18,10 @@ export class Unidad {
   @MaxLength(250)
   @IsString()
   @Column({
-      length: 250
+    length: 250
   })
   nombre: string;
-  
+
   @OneToMany(
     type => Semana,
     semana => semana.unidad
@@ -31,7 +31,7 @@ export class Unidad {
   // TODO: seria solamente de calculo pero no almacenamiento
   @IsNumber()
   @Column({
-      nullable: true
+    nullable: true
   })
   horasTotales: number;
 
