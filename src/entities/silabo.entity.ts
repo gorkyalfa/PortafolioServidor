@@ -32,6 +32,9 @@ export class Silabo {
   @JoinColumn()
   asignatura: Asignatura;
 
+  @Column('int', { nullable: true })
+  asignaturaId: number;
+
   @MaxLength(100)
   @IsNotEmpty()
   @IsString()

@@ -39,6 +39,6 @@ export class ResultadoAprendizaje {
   )
   evidencias: Evidencia[];
 
-  @Column('int')
+  @Column({default: TipoContribucion.Baja})
   contribucion: TipoContribucion;
 }

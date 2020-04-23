@@ -17,9 +17,4 @@ export class FinalidadesController {
 		return this.service.getFinalidadWithEstrategia();
 	}
 
-	@Delete('/removeMany')
-	deleteManyFinalidades(@Body(ValidationPipe) finalidades: Finalidad[]): Promise<any[]> {
-		return this.service.deleteManyFinalidades(finalidades);
-	}
-
 }

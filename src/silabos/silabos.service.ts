@@ -10,6 +10,11 @@ export class SilabosService extends TypeOrmCrudService<Silabo>{
         super(repo);
     }
 
+    async findConLectivo(): Promise<Silabo[]> {
+        const silabosConLectivos = await this.find({relations: ["periodoLectivo"]});
+        return silabosConLectivos;
+    }
+
     async findCorrequisitos(id: number): Promise<Silabo> {
         const correquisitos = await getRepository(Silabo)
        .createQueryBuilder("silabo")

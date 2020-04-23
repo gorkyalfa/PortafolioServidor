@@ -40,6 +40,7 @@ import { PeriodoLectivo } from './entities/periodoLectivo.entity';
 import { Evaluacion } from './entities/evaluacion.entity';
 import { Equivalencia } from './entities/equivalencia.entity';
 import { Bibliografia } from './entities/bibliografia.entity';
+import { RequisitosModule } from './requisitos/requisitos.module';
 
 @Module({
   imports: [
@@ -74,6 +75,7 @@ import { Bibliografia } from './entities/bibliografia.entity';
     EstrategiasMetodologicasModule,
     FinalidadesModule,
     DocenteModule,
+    RequisitosModule,
   ],
   controllers: [AppController],
   providers: [],

@@ -9,8 +9,8 @@ export class MaterialesService extends TypeOrmCrudService<Material> {
         super(repo)
     }
 
-    async getMaterialesWithTipo(): Promise<Material[]> {
-        const materiales = await this.find({ relations: ["tipoMaterial"] })
+    async getMaterialesWithTipo(idSilabo: number): Promise<Material[]> {
+        const materiales = await this.find({where: {silabo: idSilabo}, relations: ["tipoMaterial"] })
         return materiales;
     }
 

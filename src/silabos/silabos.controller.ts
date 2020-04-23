@@ -32,6 +32,11 @@ export class SilabosController {
     return res.status(HttpStatus.OK).json(asignaturas);
   }
 
+  @Get('/plectivo')
+  getConLectivo(): Promise<Silabo[]> {
+    return this.service.findConLectivo();
+  }
+
 }
 
 

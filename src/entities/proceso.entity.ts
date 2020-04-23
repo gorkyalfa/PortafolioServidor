@@ -7,6 +7,7 @@ import {
   OneToMany,
   ManyToOne,
   TreeChildren,
+  JoinColumn,
 } from 'typeorm';
 import { ResultadoAprendizaje } from './resultadoAprendizaje.entity';
 import { MaxLength, IsNotEmpty, IsString } from 'class-validator';
@@ -22,7 +23,11 @@ export class Proceso {
     type => Silabo,
     silabo => silabo.procesos,
   )
+  @JoinColumn()
   silabo: Silabo;
+
+  @Column('int', { nullable: true })
+  silaboId: number;
 
   @TreeParent()
   procesoAncestro: Proceso;

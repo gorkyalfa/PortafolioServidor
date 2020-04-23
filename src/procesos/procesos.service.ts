@@ -31,13 +31,14 @@ export class ProcesosService extends TypeOrmCrudService<Proceso> {
         return ancestros;
     }
 
-    async getTrees(): Promise<Proceso[]> {
-        const arboles = await this.manager.getTreeRepository(Proceso).findTrees();
+    async getTrees(idSilabo: number): Promise<Proceso[]> {
+        let arboles = await this.manager.getTreeRepository(Proceso).findTrees();
+        arboles = arboles.filter(arbol => arbol.silaboId == idSilabo);
         return arboles;
     }
 
-    async getIndexesOfTree(): Promise<Indice[]> {
-        const arbol = await this.getTrees()
+    async getIndexesOfTree(idSilabo: number): Promise<Indice[]> {
+        const arbol = await this.getTrees(idSilabo);
         const indices: Indice[] = [];
         
         for (let i = 0; i < arbol.length; i++) {

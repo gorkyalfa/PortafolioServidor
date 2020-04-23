@@ -28,9 +28,9 @@ export class ProcesosController {
   // Metodo para obtener Arboles de forma anidada 
   // desde el mayor mostrando los procesos que contiene
   // como propiedad.
-  @Get('/arboles')
-  getTrees(): Promise<Proceso[]> {
-    return this.service.getTrees();
+  @Get('/:id/arboles')
+  getTrees(@Param('id') id: number): Promise<Proceso[]> {
+    return this.service.getTrees(id);
   }
 
   @Delete('/remover/:procesoId')
@@ -40,9 +40,9 @@ export class ProcesosController {
     return this.service.removeProcesoAndClosure(procesoId);
   }
 
-  @Get('/indices')
-  getIndexesOfTree(): Promise<Indice[]> {
-    return this.service.getIndexesOfTree();
+  @Get('/:id/indices')
+  getIndexesOfTree(@Param('id') id: number): Promise<Indice[]> {
+    return this.service.getIndexesOfTree(id);
   }
   
 }

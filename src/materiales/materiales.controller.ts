@@ -1,4 +1,4 @@
-import { Controller, Get, Delete, Body, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Delete, Body, ValidationPipe, Param } from '@nestjs/common';
 import { Material } from 'src/entities/material.entity';
 import { Crud } from '@nestjsx/crud';
 import { MaterialesService } from './materiales.service';
@@ -12,9 +12,9 @@ import { MaterialesService } from './materiales.service';
 export class MaterialesController {
 	constructor(private service: MaterialesService){}
 	
-	@Get('tipos')
-	async getMaterialesWithTipo(): Promise<Material[]> {
-		return this.service.getMaterialesWithTipo();
+	@Get('/:id/tipos')
+	async getMaterialesWithTipo(@Param('id') id: number): Promise<Material[]> {
+		return this.service.getMaterialesWithTipo(id);
 	}
 	
     @Delete('/removeMany')
