@@ -61,13 +61,13 @@ export class Silabo {
     periodoAcademico => periodoAcademico.silabos,
   )
   periodoAcademico: PeriodoAcademico;
-
-  // TODO : esto es una entidad inicio, fin, nombre (calculado ej: Noviembre 2019 - Abril 2020)
-  @ManyToOne(
-    type => PeriodoLectivo,
-    periodoLectivo => periodoLectivo.silabos,
-  )
-  periodoLectivo: PeriodoLectivo;
+  
+  @MaxLength(50)
+  @IsNotEmpty()
+  @Column({
+    length: 50,
+  })
+  periodoLectivo: string;
 
   @MaxLength(50)
   @IsNotEmpty()
