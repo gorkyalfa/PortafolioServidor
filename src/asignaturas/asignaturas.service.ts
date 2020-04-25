@@ -11,6 +11,11 @@ constructor(@InjectRepository(Asignatura) repo: any) {
     super(repo);
  }  
 
+async findCompleto(id: number): Promise<Asignatura> {
+  const asignaturaCompletos = await this.findOne(id, {relations: ["carrera", "periodoAcademico", "modalidad", "malla"]});
+  return asignaturaCompletos;
+}
+
 async findObjetiboDetalle (id:number) {
   const asignatura = await getRepository(Asignatura)
     .createQueryBuilder("asignatura")

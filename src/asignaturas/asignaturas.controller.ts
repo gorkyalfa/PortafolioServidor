@@ -25,4 +25,9 @@ export class AsignaturasController {
 readObjetiboDetalle(@Param('id') id:number)  {
   return this.service.findObjetiboDetalle(id)
 }
+
+  @Get('/:id/completo')
+  getCompleto(@Param('id') id: number): Promise<Asignatura> {
+    return this.service.findCompleto(id);
+  }
 }

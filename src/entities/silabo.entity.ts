@@ -20,7 +20,6 @@ import { PeriodoAcademico } from './periodoAcademico.entity';
 import { Carrera } from './carrera.entity';
 import { Bibliografia } from './bibliografia.entity';
 import { EstrategiaMetodologica } from './estrategiaMetodologica.entity';
-import { PeriodoLectivo } from './periodoLectivo.entity';
 import { Evaluacion } from './evaluacion.entity';
 
 @Entity('silabos')
@@ -123,10 +122,10 @@ export class Silabo {
   )
   prerrequisitos: Requisito[];
 
-  @MaxLength(100)
+  @MaxLength(2000)
   @IsString()
   @Column({
-    length: 1000,
+    length: 2000,
   })
   descripcionAsignatura: string;
 

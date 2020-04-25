@@ -10,9 +10,9 @@ export class SilabosService extends TypeOrmCrudService<Silabo>{
         super(repo);
     }
 
-    async findConLectivo(): Promise<Silabo[]> {
-        const silabosConLectivos = await this.find({relations: ["periodoLectivo"]});
-        return silabosConLectivos;
+    async findCompleto(): Promise<Silabo[]> {
+        const silabosCompletos = await this.find({relations: ["carrera", "periodoAcademico", "correquisitos", "prerrequisitos"]});
+        return silabosCompletos;
     }
 
     async findCorrequisitos(id: number): Promise<Silabo> {

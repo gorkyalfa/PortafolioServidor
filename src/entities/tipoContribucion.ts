@@ -1,5 +1,5 @@
 export enum TipoContribucion {
-  Alta,
-  Media,
-  Baja
+  Alta = 'Alta',
+  Media = 'Media',
+  Baja = 'Baja'
 }

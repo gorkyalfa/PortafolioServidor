@@ -32,9 +32,9 @@ export class SilabosController {
     return res.status(HttpStatus.OK).json(asignaturas);
   }
 
-  @Get('/plectivo')
-  getConLectivo(): Promise<Silabo[]> {
-    return this.service.findConLectivo();
+  @Get('/completo')
+  getCompleto(): Promise<Silabo[]> {
+    return this.service.findCompleto();
   }
 
 }
