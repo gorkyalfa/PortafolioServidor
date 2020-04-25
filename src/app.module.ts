@@ -46,11 +46,11 @@ import { RequisitosModule } from './requisitos/requisitos.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'ec2-18-235-20-228.compute-1.amazonaws.com',
       port: 5432,
-      username: 'postgres',
-      password: 'postgres',
-      database: 'prueba',
+      username: 'mqoulwjgncodgy',
+      password: '2543b8129ea1dd8799a170341094f4e90bad55848b8777e9fa7476506b9fb84a',
+      database: 'd921mm0t7pbamc',
       entities: [Asignatura, Bibliografia, Carrera, Docente, Equivalencia, Evaluacion, Evidencia, Instituto,
         Malla, Modalidad, PeriodoAcademico, PeriodoLectivo, Proceso, Requisito,
         ResultadoAprendizaje, Silabo, TipoMaterial, Semana,
