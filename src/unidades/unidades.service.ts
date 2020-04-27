@@ -12,7 +12,7 @@ export class UnidadesService extends TypeOrmCrudService<Unidad>{
     }
 
     async getUnidadesByContenido(contenidoId: any): Promise<Unidad[]> {
-        const unidades = await this.find({contenido: contenidoId});
+        const unidades = await this.find({ relations: ["semanas"], where: {contenido: contenidoId} });
         return unidades;
     }
 

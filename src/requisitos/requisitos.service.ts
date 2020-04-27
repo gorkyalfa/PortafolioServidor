@@ -21,4 +21,15 @@ export class RequisitosService extends TypeOrmCrudService<Requisito> {
         return prerrequisitos;
     }
 
+    async getCorrequisitosBySilabo(silabo: number): Promise<Requisito[]> {
+        const correquisitos = await this.find({where: { silaboCorrequisito: silabo} });
+        return correquisitos;
+    }
+
+    async getPrerequisitosBySilabo(silabo: number): Promise<Requisito[]> {
+        console.log(silabo);
+        const prerrequisitos = await this.find({where: { silaboPrerrequisito: silabo} })
+        return prerrequisitos;
+    }
+
 }

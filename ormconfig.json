@@ -1,13 +1,13 @@
 {
   "type": "postgres",
-  "host": "ec2-18-235-20-228.compute-1.amazonaws.com",
+  "host": "localhost",
   "port": 5432,
-  "username": "mqoulwjgncodgy",
-  "password": "2543b8129ea1dd8799a170341094f4e90bad55848b8777e9fa7476506b9fb84a",
+  "username": "postgres",
+  "password": "postgres",
   "entities": [
     "src/entities/*.entity{.ts,.js}"
   ],
-  "database": "d921mm0t7pbamc",
+  "database": "prueba",
   "synchronize": true,
   "logging": true,
   "migrations": ["dist/migrations/*.js"],
